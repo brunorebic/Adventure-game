@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DataStream and ObjectStream including Serialization.iml" filepath="$PROJECT_DIR$/DataStream and ObjectStream including Serialization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reading Locations on demand using RandomAccessFile.iml" filepath="$PROJECT_DIR$/Reading Locations on demand using RandomAccessFile.iml" />
     </modules>
   </component>
 </project>

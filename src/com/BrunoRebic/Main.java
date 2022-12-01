@@ -1,5 +1,6 @@
 package com.BrunoRebic;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -8,18 +9,18 @@ import java.util.Scanner;
 public class Main {
     private static final Locations locations = new Locations();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        Locations.printLocationsAndExits();//optional - print all locations and exists
 
         Scanner scanner = new Scanner(System.in);
 
-        int loc = 1;
+        Location currentLocation = locations.getLocation(1);
         while (true) {
-            System.out.println(locations.get(loc).getDescription());
-            if (loc == 0)
+            System.out.println(currentLocation.getDescription());
+            if (currentLocation.getLocationID() == 0)
                 break;
 
-            Map<String, Integer> exits = locations.get(loc).getExits();
+            Map<String, Integer> exits = currentLocation.getExits();
             Iterator<String> it = exits.keySet().iterator();
 
             System.out.print("Available exits are : ");
@@ -51,11 +52,13 @@ public class Main {
                         direction = map.get(dir);
                 }
             }
-            if (exits.containsKey(direction))
-                loc = exits.get(direction);
-            else
+            if (exits.containsKey(direction)) {
+                int id = currentLocation.getExits().get(direction);
+                currentLocation = locations.getLocation(id);
+            } else
                 System.out.println("You cannot go in that direction!");
         }
+        locations.close();
     }
 }
 
