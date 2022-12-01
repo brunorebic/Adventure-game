@@ -1,4 +1,3 @@
 # Adventure-game
 
-Text adventure game from 70s
-Reading from a file on demand
+Text adventure game from 70s, reading from a file on demand
