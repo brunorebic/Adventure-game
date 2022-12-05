@@ -10,8 +10,7 @@ public class Main {
     private static final Locations locations = new Locations();
 
     public static void main(String[] args) throws IOException {
-//        Locations.printLocationsAndExits();//optional - print all locations and exists
-        System.out.println("Adventure game :\n");
+        Locations.printLocationsAndExits();//optional - print all locations and exists
 
         Scanner scanner = new Scanner(System.in);
 
