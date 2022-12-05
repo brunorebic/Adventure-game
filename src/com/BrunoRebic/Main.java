@@ -14,7 +14,6 @@ public class Main {
         System.out.println("Adventure game\n");
         Locations.printLocationsAndExits();//optional - print all locations and exists
 
-
         Scanner scanner = new Scanner(System.in);
 
         Location currentLocation = locations.getLocation(1);
