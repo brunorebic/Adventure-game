@@ -82,19 +82,6 @@ public class Locations implements Map<Integer, Location> {
         }
     }
 
-
-    public static void printLocationsAndExits() {
-        for (Location location : locations.values()) {
-            System.out.println("Location ID : " + location.getLocationID());
-            System.out.println("Location description : " + location.getDescription());
-            System.out.println("Exits : ");
-            for (String direction : location.getExits().keySet()) {
-                System.out.println(direction + " - " + location.getExits().get(direction));
-            }
-            System.out.println();
-        }
-    }
-
     public Location getLocation(int locID) throws IOException {
         IndexRecord indexRecord = index.get(locID);
         int startPosition = indexRecord.getStartByte();
