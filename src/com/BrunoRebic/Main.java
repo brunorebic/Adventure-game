@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println("Adventure game :\n");
+        System.out.println("Adventure game\n");
         Locations.printLocationsAndExits();//optional - print all locations and exists
 
 
