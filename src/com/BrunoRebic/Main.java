@@ -13,6 +13,38 @@ public class Main {
 
         System.out.println("Adventure game\n");
 
+        boolean isEnd = false;
+        while (!isEnd) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Do you want to print all locations and exists first? (yes/no):");
+            String answer = sc.nextLine().toUpperCase();
+            String[] data = answer.split("[ ,.!?]");
+
+            boolean printLoc = false;
+            boolean containsYes = false;
+            boolean containsNo = false;
+
+            for (String str : data) {
+                System.out.println(str);
+                if (str.equals("YES") || str.equals("Y")) {
+                    printLoc = true;
+                    containsYes = true;
+                } else if (str.equals("NO") || str.equals("N")) {
+                    printLoc = false;
+                    containsNo = true;
+                }
+            }
+
+            if (!containsYes && !containsNo) {
+                System.out.println("Please, enter valid answer");
+            } else {
+                if (printLoc) {
+                    Locations.printLocationsAndExits();
+                }
+                isEnd = true;
+            }
+        }
+
         Scanner scanner = new Scanner(System.in);
 
         Location currentLocation = locations.getLocation(1);

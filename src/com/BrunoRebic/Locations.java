@@ -49,20 +49,20 @@ public class Locations implements Map<Integer, Location> {
 
     static {
         //reading from binary file (.dat) using ObjectOutputStream
-//        try (ObjectInputStream locAndDirFile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("locations_big_object_data.dat")))) {
-//            boolean eof = false;
-//            while (!eof) {
-//                try {
-//                    Location location = (Location) locAndDirFile.readObject();
-//                    locations.put(location.getLocationID(), location);
-//
-//                } catch (EOFException e) {
-//                    eof = true;
-//                }
-//            }
-//        } catch (IOException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try (ObjectInputStream locAndDirFile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("locations_big_object_data.dat")))) {
+            boolean eof = false;
+            while (!eof) {
+                try {
+                    Location location = (Location) locAndDirFile.readObject();
+                    locations.put(location.getLocationID(), location);
+
+                } catch (EOFException e) {
+                    eof = true;
+                }
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         try {
             raf = new RandomAccessFile("locations_rand.dat", "rwd");
@@ -79,6 +79,18 @@ public class Locations implements Map<Integer, Location> {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void printLocationsAndExits() {
+        for (Location location : locations.values()) {
+            System.out.println("Location ID : " + location.getLocationID());
+            System.out.println("Location description : " + location.getDescription());
+            System.out.println("Exits : ");
+            for (String direction : location.getExits().keySet()) {
+                System.out.println(direction + " - " + location.getExits().get(direction));
+            }
+            System.out.println();
         }
     }
 
